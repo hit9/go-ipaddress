@@ -1,6 +1,7 @@
 package ipv4
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"strconv"
@@ -8,6 +9,10 @@ import (
 )
 
 func Atoi(address string) (integer uint32, err error) {
+	if len(address) > 12 {
+		return integer, errors.New("invalid address string")
+	}
+
 	octs := strings.Split(address, ".")
 
 	if len(octs) != 4 {
@@ -27,14 +32,16 @@ func Atoi(address string) (integer uint32, err error) {
 }
 
 func Itoa(integer uint32) (address string, err error) {
-	octs := []string {}
+	var buf bytes.Buffer
 
 	for i := 0; i < 4; i++ {
 		oct := (integer >> uint32((4 - 1 - i) * 8)) & 0xff
-		octs = append(octs, strconv.Itoa(int(oct)))
+		buf.WriteString(strconv.Itoa(int(oct)))
+
+		if i < 3 {
+			buf.WriteByte(46)
+		}
+
 	}
-
-	fmt.Println(len(octs))
-
-	return strings.Join(octs, "."), err
+	return buf.String(), err
 }
