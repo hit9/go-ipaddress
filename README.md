@@ -13,9 +13,11 @@ Ipv4 address utils for golang.
 #### func  Atoi
 
 ```go
-func Atoi(addr string) (uint32, error)
+func Atoi(addr string) (sum uint32, err error)
 ```
-Atoi returns the uint32 representation of an ipv4 addr string value. Example:
+Atoi returns the uint32 representation of an ipv4 addr string value.
+
+Example:
 
     Atoi("192.168.0.1")   // 3232312315
 
@@ -24,7 +26,9 @@ Atoi returns the uint32 representation of an ipv4 addr string value. Example:
 ```go
 func Itoa(integer uint32) string
 ```
-Itoa returns the string representation of an ipv4 addr uint32 value. Example:
+Itoa returns the string representation of an ipv4 addr uint32 value.
+
+Example:
 
     Itoa(3232312315)  // "192.168.0.1"
 
@@ -49,7 +53,7 @@ Example:
 #### func  Or
 
 ```go
-func Or(addra string, addrb string) (string, error)
+func Or(addra string, addrb string) (addr string, err error)
 ```
 Example:
 
@@ -67,8 +71,23 @@ Example:
 #### func  Xor
 
 ```go
-func Xor(addra string, addrb string) (string, error)
+func Xor(addra string, addrb string) (addr string, err error)
 ```
 Example:
 
     Xor("0.255.255.255", "192.255.255.255")  // "192.0.0.0"
+
+#### type Net
+
+```go
+type Net struct {
+}
+```
+
+
+#### func  Network
+
+```go
+func Network(block string) (net Net, err error)
+```
+Returns information for a netblock.
