@@ -4,10 +4,6 @@
 
 Ipv4 address utils for golang.
 
-### Install
-
-    go get github.com/hit9/go-ipv4/ipv4
-
 ## Usage
 
 #### func  Atoi
