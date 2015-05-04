@@ -9,7 +9,7 @@ import (
 )
 
 func Atoi(address string) (integer uint32, err error) {
-	if len(address) > 12 {
+	if len(address) > 15 {
 		return integer, errors.New("invalid address string")
 	}
 
