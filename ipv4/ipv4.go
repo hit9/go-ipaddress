@@ -14,6 +14,7 @@ import (
 // Example:
 //
 //	Atoi("192.168.0.1")   // 3232312315
+//
 func Atoi(address string) (uint32, error) {
 	var sum uint32 = 0
 
@@ -41,6 +42,7 @@ func Atoi(address string) (uint32, error) {
 // Example:
 //
 //	Itoa(3232312315)  // "192.168.0.1"
+//
 func Itoa(integer uint32) string {
 	var buf bytes.Buffer
 
