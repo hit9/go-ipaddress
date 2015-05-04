@@ -86,7 +86,14 @@ func Xor(addra string, addrb string) (string, error) {
 //
 func Next(addr string) (string, error) {
 	i, err := Atoi(addr)
-	return Itoa(i + 1)
+	return Itoa(i + 1), err
 }
 
-
+// Example:
+//
+//	Prev("192.168.0.1")  // "192.168.0.0"
+//
+func Prev(addr string) (string, error) {
+	i, err := Atoi(addr)
+	return Itoa(i - 1), err
+}

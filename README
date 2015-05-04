@@ -1,7 +1,7 @@
 PACKAGE DOCUMENTATION
 
 package ipv4
-    import "./ipv4"
+    import "github.com/hit9/go-ipv4/ipv4"
 
 
 FUNCTIONS
@@ -32,6 +32,11 @@ func Or(addra string, addrb string) (string, error)
     Example:
 
 	Or("0.0.1.1", "1.1.0.0")  // "1.1.1.1"
+
+func Prev(addr string) (string, error)
+    Example:
+
+	Prev("192.168.0.1")  // "192.168.0.0"
 
 func Xor(addra string, addrb string) (string, error)
     Example:
