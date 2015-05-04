@@ -11,14 +11,14 @@ import (
 )
 
 type Net struct {
-	address string
-	bitmask uint8
-	mask string
-	hostmask string
-	broadcast string
-	first string
-	last string
-	size uint32
+	address   string // address
+	bitmask   uint8  // bitmask
+	mask      string // mask
+	hostmask  string // hostmask
+	broadcast string // broadcast
+	first     string // first
+	last      string // last
+	size      uint32 //size
 }
 
 // Atoi returns the uint32 representation of an ipv4 addr string value.
@@ -144,7 +144,7 @@ func Network(block string) (net Net, err error) {
 	if err != nil {
 		return net, err
 	}
-	if bitmask & 31 != bitmask {
+	if bitmask&31 != bitmask {
 		return net, errors.New("invalid bitmask")
 	}
 	net.bitmask = uint8(bitmask)

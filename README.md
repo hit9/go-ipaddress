@@ -77,6 +77,14 @@ Example:
 
 ```go
 type Net struct {
+	address   string // address
+	bitmask   uint8  // bitmask
+	mask      string // mask
+	hostmask  string // hostmask
+	broadcast string // broadcast
+	first     string // first
+	last      string // last
+	size      uint32 //size
 }
 ```
 
