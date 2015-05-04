@@ -5,6 +5,7 @@
 // Install
 //
 //	go get github.com/hit9/go-ipv4/ipv4
+//
 package ipv4
 
 import (
