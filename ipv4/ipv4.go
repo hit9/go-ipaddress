@@ -13,7 +13,7 @@ import (
 // Atoi returns the uint32 representation of an ipv4 address string value.
 // Example:
 //
-//		Atoi("192.168.0.1")   // 3232312315
+//	Atoi("192.168.0.1")   // 3232312315
 func Atoi(address string) (uint32, error) {
 	var sum uint32 = 0
 
@@ -40,7 +40,7 @@ func Atoi(address string) (uint32, error) {
 // Itoa returns the string representation of an ipv4 address uint32 value.
 // Example:
 //
-//		Itoa(3232312315)  // "192.168.0.1"
+//	Itoa(3232312315)  // "192.168.0.1"
 func Itoa(integer uint32) string {
 	var buf bytes.Buffer
 
