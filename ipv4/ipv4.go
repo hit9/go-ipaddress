@@ -2,9 +2,13 @@
 
 // Ipv4 address utils for golang.
 //
-// Install
+// INSTALL
 //
 //	go get github.com/hit9/go-ipaddress/ipv4
+//
+// LICENSE
+//
+//	MIT. (c) hit9.
 //
 package ipv4
 
