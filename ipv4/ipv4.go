@@ -1,6 +1,11 @@
 // Copyright 2015. Chao Wang <hit9@icloud.com>
 
 // Ipv4 address utils for golang.
+//
+// Install
+//
+//	go get github.com/hit9/go-ipaddress/ipv4
+//
 package ipv4
 
 import (

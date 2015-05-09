@@ -5,6 +5,10 @@ package ipv4
 
     Ipv4 address utils for golang.
 
+    Install
+
+	go get github.com/hit9/go-ipaddress/ipv4
+
 FUNCTIONS
 
 func Atoi(addr string) (sum uint32, err error)
