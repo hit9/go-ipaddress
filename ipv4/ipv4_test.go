@@ -13,8 +13,8 @@ var AtoiCases = []struct {
 }{
 	{"0.0.0.0", 0},
 	{"0.0.1.0", 256},
-	{"0.1.1.0", 256 + 256 * 256},
-	{"1.1.1.0", 256 + 256 * 256 + 256 * 256 * 256},
+	{"0.1.1.0", 256 + 256*256},
+	{"1.1.1.0", 256 + 256*256 + 256*256*256},
 	{"192.168.0.1", 3232235521},
 }
 
@@ -31,13 +31,13 @@ func TestAtoi(t *testing.T) {
 }
 
 var ItoaCases = []struct {
-	addr uint32
-	except  string
+	addr   uint32
+	except string
 }{
 	{0, "0.0.0.0"},
 	{256, "0.0.1.0"},
-	{256 + 256 * 256, "0.1.1.0"},
-	{256 + 256 * 256 + 256 * 256 * 256, "1.1.1.0"},
+	{256 + 256*256, "0.1.1.0"},
+	{256 + 256*256 + 256*256*256, "1.1.1.0"},
 	{3232235521, "192.168.0.1"},
 }
 
@@ -51,7 +51,7 @@ func TestItoa(t *testing.T) {
 }
 
 var NotCases = []struct {
-	addr string
+	addr   string
 	except string
 }{
 	{"0.0.1.1", "255.255.254.254"},
@@ -71,10 +71,10 @@ func TestNot(t *testing.T) {
 }
 
 var OrCases = []struct {
-	addra string
-	addrb string
+	addra  string
+	addrb  string
 	except string
-} {
+}{
 	{"0.0.1.1", "1.1.0.0", "1.1.1.1"},
 	{"0.0.1.2", "1.2.0.0", "1.2.1.2"},
 	{"0.0.1.233", "1.2.0.0", "1.2.1.233"},
@@ -94,10 +94,10 @@ func TestOr(t *testing.T) {
 }
 
 var XorCases = []struct {
-	addra string
-	addrb string
+	addra  string
+	addrb  string
 	except string
-} {
+}{
 	{"0.255.255.255", "192.255.255.255", "192.0.0.0"},
 }
 
@@ -114,7 +114,7 @@ func TestXor(t *testing.T) {
 }
 
 var PrevCases = []struct {
-	addr string
+	addr   string
 	except string
 }{
 	{"0.0.0.1", "0.0.0.0"},
@@ -136,7 +136,7 @@ func TestPrev(t *testing.T) {
 }
 
 var NextCases = []struct {
-	addr string
+	addr   string
 	except string
 }{
 	{"0.0.0.0", "0.0.0.1"},
@@ -158,10 +158,10 @@ func TestNext(t *testing.T) {
 }
 
 var NetworkCases = []struct {
-	block string
+	block  string
 	except Net
 }{
-	{"192.168.0.0/24", Net {
+	{"192.168.0.0/24", Net{
 		"192.168.0.0",
 		24,
 		"255.255.255.0",
