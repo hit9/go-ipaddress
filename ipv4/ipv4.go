@@ -131,6 +131,10 @@ func Prev(addr string) (string, error) {
 
 // Returns information for a netblock.
 func Network(block string) (net Net, err error) {
+	if len(block) > 18 {
+		return net, errors.New("block too long")
+	}
+
 	list := strings.Split(block, "/")
 	if len(list) != 2 {
 		return net, errors.New("invalid block")
@@ -167,6 +171,7 @@ func Network(block string) (net Net, err error) {
 	if err != nil {
 		return net, err
 	}
+
 	net.first, err = Next(addr)
 	if err != nil {
 		return net, err
