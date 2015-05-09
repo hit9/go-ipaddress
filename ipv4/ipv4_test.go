@@ -3,7 +3,7 @@
 package ipv4_test
 
 import (
-	. "github.com/hit9/go-ipv4/ipv4"
+	. "github.com/hit9/go-ipaddress/ipv4"
 	"testing"
 )
 
