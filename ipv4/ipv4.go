@@ -11,14 +11,14 @@ import (
 )
 
 type Net struct {
-	address   string // address
-	bitmask   uint8  // bitmask
-	mask      string // mask
-	hostmask  string // hostmask
-	broadcast string // broadcast
-	first     string // first
-	last      string // last
-	size      uint32 //size
+	Address   string // address
+	Bitmask   uint8  // bitmask
+	Mask      string // mask
+	Hostmask  string // hostmask
+	Broadcast string // broadcast
+	First     string // first
+	Last      string // last
+	Size      uint32 //size
 }
 
 // Atoi returns the uint32 representation of an ipv4 addr string value.
@@ -53,11 +53,11 @@ func Atoi(addr string) (sum uint32, err error) {
 //
 //	Itoa(3232235521)  // "192.168.0.1"
 //
-func Itoa(integer uint32) string {
+func Itoa(addr uint32) string {
 	var buf bytes.Buffer
 
 	for i := 0; i < 4; i++ {
-		oct := (integer >> uint32((4-1-i)*8)) & 0xff
+		oct := (addr >> uint32((4-1-i)*8)) & 0xff
 		buf.WriteString(strconv.FormatUint(uint64(oct), 10))
 		if i < 3 {
 			buf.WriteByte('.')
@@ -130,6 +130,21 @@ func Prev(addr string) (string, error) {
 }
 
 // Returns information for a netblock.
+//
+// Example:
+//
+//	Network("192.168.0.0/24")
+//	// {
+//	//	address: "192.168.0.0",
+//	//	bitmask: 24,
+//	//	mask: "255.255.255.0",
+//	//	hostmask: "0.0.0.255",
+//	//	broadcast: "192.168.0.255",
+//	//	first: "192.168.0.1",
+//	//	last: "192.168.0.254",
+//	//	size: 254,
+//	// }
+//
 func Network(block string) (net Net, err error) {
 	if len(block) > 18 {
 		return net, errors.New("block too long")
@@ -141,7 +156,7 @@ func Network(block string) (net Net, err error) {
 	}
 
 	// address
-	net.address = list[0]
+	net.Address = list[0]
 
 	// bitmask
 	bitmask, err := strconv.ParseUint(list[1], 10, 0)
@@ -151,49 +166,49 @@ func Network(block string) (net Net, err error) {
 	if bitmask&31 != bitmask {
 		return net, errors.New("invalid bitmask")
 	}
-	net.bitmask = uint8(bitmask)
+	net.Bitmask = uint8(bitmask)
 
 	// mask
-	net.mask = Itoa(0xffffffff >> (32 - net.bitmask) << (32 - net.bitmask))
-	net.hostmask, err = Not(net.mask)
+	net.Mask = Itoa(0xffffffff >> (32 - net.Bitmask) << (32 - net.Bitmask))
+	net.Hostmask, err = Not(net.Mask)
 	if err != nil {
 		return net, err
 	}
 
 	// broadcast
-	net.broadcast, err = Or(net.address, net.hostmask)
+	net.Broadcast, err = Or(net.Address, net.Hostmask)
 	if err != nil {
 		return net, err
 	}
 
 	// first
-	addr, err := Xor(net.hostmask, net.broadcast)
+	addr, err := Xor(net.Hostmask, net.Broadcast)
 	if err != nil {
 		return net, err
 	}
 
-	net.first, err = Next(addr)
+	net.First, err = Next(addr)
 	if err != nil {
 		return net, err
 	}
 
 	// last
-	net.last, err = Prev(net.broadcast)
+	net.Last, err = Prev(net.Broadcast)
 	if err != nil {
 		return net, err
 	}
 
 	// size
-	i, err := Atoi(net.last)
+	i, err := Atoi(net.Last)
 	if err != nil {
 		return net, err
 	}
 
-	j, err := Atoi(net.first)
+	j, err := Atoi(net.First)
 	if err != nil {
 		return net, err
 	}
 
-	net.size = i - j + 1
+	net.Size = i - j + 1
 	return net, nil
 }
