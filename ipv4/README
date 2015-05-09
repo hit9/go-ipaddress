@@ -1,7 +1,7 @@
 PACKAGE DOCUMENTATION
 
 package ipv4
-    import "."
+    import "github.com/hit9/go-ipaddress/ipv4"
 
     Ipv4 address utils for golang.
 
