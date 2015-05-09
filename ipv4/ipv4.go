@@ -25,7 +25,7 @@ type Net struct {
 //
 // Example:
 //
-//	Atoi("192.168.0.1")   // 3232312315
+//	Atoi("192.168.0.1")   // 3232235521
 //
 func Atoi(addr string) (sum uint32, err error) {
 	if len(addr) > 15 {
@@ -51,7 +51,7 @@ func Atoi(addr string) (sum uint32, err error) {
 //
 // Example:
 //
-//	Itoa(3232312315)  // "192.168.0.1"
+//	Itoa(3232235521)  // "192.168.0.1"
 //
 func Itoa(integer uint32) string {
 	var buf bytes.Buffer
